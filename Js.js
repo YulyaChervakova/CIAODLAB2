@@ -8,26 +8,25 @@ function arrFill(x) {
 }
 
 //fibonachi
-function fibonacci(arr, a, b, searchEl) {
+function fibonacci(arr, firstElem, lastElem, searchElem) {
     var fibSum = 0;
     var fib1 = 1;
     var fib2 = 1;
 
-    while (fibSum <= b) {
-        if (arr[fibSum + a] == searchEl) {
-
-            return fibSum + a;
+    while (fibSum <= lastElem) {
+        if (searchElem == arr[fibSum + firstElem]) {
+            return fibSum + firstElem;
         } else {
-            if (searchEl > arr[fibSum + a] && (fibSum + a) != (b)) {
+            if (searchElem > arr[fibSum + firstElem] && (fibSum + firstElem) != lastElem) {
                 fib1 = fib2;
                 fib2 = fibSum;
                 fibSum = fib1 + fib2;
-                if (fibSum > b) {
-                    fibSum = b;
+                if (fibSum > lastElem) {
+                    fibSum = lastElem;
                 }
             } else {
-                if (searchEl < arr[fibSum + a]) {
-                    return fibonacci(arr, fib2 + a, fibSum + a, searchEl);
+                if (searchElem < arr[fibSum + firstElem]) {
+                    return fibonacci(arr, fib2 + firstElem, fibSum + firstElem, searchElem);
                 } else {
                     return -1;
                 }
