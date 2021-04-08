@@ -25,7 +25,7 @@ function fibonacci(arr, firstElem, lastElem, searchElem) {
                     fibSum = lastElem;
                 }
             } else {
-                if (searchElem < arr[fibSum + firstElem]) {
+                if (searchElem < arr[fibSum + firstElem]&& (fibSum-fib2)!=0 &&(fibSum-fib2)!=1) {
                     return fibonacci(arr, fib2 + firstElem, fibSum + firstElem, searchElem);
                 } else {
                     return -1;
@@ -67,12 +67,12 @@ SearchElem1.onclick = function () {
     }
     var end = new Date().getTime();
     //вывод
+    var fibSerch = document.getElementById("fibSerch");
+    fibSerch.innerHTML = '';
     if (result == -1) {
-        fibSerch.innerHTML = "";
-        alert("Элемент не найден");
+       fibSerch.innerHTML += "<p>Элемент не найден</p>"
     } else {
-        var fibSerch = document.getElementById("fibSerch");
-        fibSerch.innerHTML = "";
+
         fibSerch.innerHTML += "<p>Номер элемента по поиску Фибоначи :" + result + "<br> Time:" + (end - start)/10000 + "ms</p>";
     }
     // Стандартный поиск
@@ -81,7 +81,10 @@ SearchElem1.onclick = function () {
     var m = arr.indexOf(parseInt(outputEl.value, 0));
     }
     end = new Date().getTime();
-    fibSerch.innerHTML += "<p>Номер элемента по стандартному поиску: " + m + "<br> Time:" + (end - start)/10000 + "ms</p>";
+    console.log(m);
+    if (m !== -1) {
+        fibSerch.innerHTML += "<p>Номер элемента по стандартному поиску: " + m + "<br> Time:" + (end - start)/10000 + "ms</p>";
+    }
 };
 
 
